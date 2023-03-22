@@ -57,6 +57,6 @@ const PORT = process.env.PORT || 4000;
 // });
 
 
-mongoose.connect(process.env.Mongo_url,{useNewUrlParser: true, useUnifiedTopology:true})
+moongoose.connect(process.env.Mongo_url,{useNewUrlParser: true, useUnifiedTopology:true})
     .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
     .catch((error) => console.log(error.message));
