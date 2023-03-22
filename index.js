@@ -19,12 +19,15 @@ dotenv.config();
 app.use(express.json()); // to support URL-encoded bodies
 app.use("/images", express.static(path.join(__dirname,"/images")))
 
-moongoose.connect(process.env.MONGO_URL,{
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-})
-.then(console.log("connected to MongoDB"))
-.catch((err) => console.log(err));
+// moongoose.connect(process.env.MONGO_URL,{
+//       useNewUrlParser: true,
+//       useUnifiedTopology: true
+// })
+// .then(console.log("connected to MongoDB"))
+// .catch((err) => console.log(err));
+
+
+
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -49,6 +52,11 @@ app.use("/api/categories", categoriesRoute);
 
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT ,()=>{
-    console.log("Working");
-});
+// app.listen(PORT ,()=>{
+//     console.log("Working");
+// });
+
+
+mongoose.connect(process.env.Mongo_url,{useNewUrlParser: true, useUnifiedTopology:true})
+    .then(() => app.listen(PORT, () => console.log(`Server running on port: ${PORT}`)))
+    .catch((error) => console.log(error.message));
